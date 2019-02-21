@@ -24,7 +24,7 @@ class Todos {
     return Object.assign({}, newTodo);
   }
   deleteTodo(id) {
-
+      
   }
   static generateId() {
     return String(Date.now());
