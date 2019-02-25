@@ -8,6 +8,7 @@ const { table, form, title, text } = uiElements;
 // Events
 title.addEventListener("keyup", toogleDisabled);
 form.addEventListener("submit", onSubmit);
+table.addEventListener("click", onClick)
 
 // Handlers
 function toogleDisabled(e) {
@@ -23,3 +24,17 @@ function onSubmit(e) {
   form.reset();
   toogleDisabled();
 }
+
+function onClick(e) {
+	if (e.target.classList.contains('remove-task')) {
+        const id = e.target.closest("[data-task-id]").dataset.taskId;
+        todosView.deleteTodo(id);
+    }
+}
+
+// table.addEventListener("click", function (e) {
+//     if (e.target.classList.contains('remove-task')) {
+//         const id = e.target.closest("[data-task-id]").dataset.taskId;
+//         deleteItemfromStorage(id) && deleteTodoFromView(id);
+//     }
+// });

@@ -7,7 +7,8 @@ class TodosView {
     this.__table.insertAdjacentHTML('afterbegin', template);
   }
   deleteTodo(id) {
-
+    const target = document.querySelector(`[data-task-id="${id}"]`);
+    this.__table.removeChild(target);
   }
   static _createTemplate(todo) {
     return `

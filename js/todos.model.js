@@ -24,7 +24,16 @@ class Todos {
     return Object.assign({}, newTodo);
   }
   deleteTodo(id) {
-      
+      if (!id) return console.log('Передайте id');
+
+    for (let i = 0; i < __todos.length; i++) {
+        if (__todos[i].id == id) {
+            __todos.splice(i, 1);
+            return true;
+        }
+    }
+
+    return false;
   }
   static generateId() {
     return String(Date.now());
