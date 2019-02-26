@@ -20,3 +20,23 @@ class TodosView {
     `;
   }
 }
+
+
+class AlertView {
+  constructor() {
+    this.__table = uiElements.table;
+  }
+  addAlert() {
+    const templateAlert = AlertView._createAlert();
+    this.__table.insertAdjacentHTML('afterbegin', templateAlert);
+  }
+  deleteAlert() {
+    const targetAlert = document.getElementById('alert');
+    this.__table.removeChild(targetAlert);
+  }
+  static _createAlert() {
+    return `
+    <div id="alert"> 'Задача добавлена успешно' </div>
+    `
+  }
+}

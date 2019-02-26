@@ -4,6 +4,8 @@ const todos = new Todos();
 const todosView = new TodosView();
 // Init ui elements
 const { table, form, title, text } = uiElements;
+// Init AlertView
+const alertView = new AlertView();
 
 // Events
 title.addEventListener("keyup", toogleDisabled);
@@ -20,9 +22,10 @@ function onSubmit(e) {
   if (!title.value || !text.value) return;
   const newTodo = todos.addTodo(title.value, text.value);
   todosView.addTodo(newTodo);
-  // alertMesssage(false, 'Задача добавлена успешно');
+  alertView.addAlert();
   form.reset();
   toogleDisabled();
+  setTimeout(function() {alertView.deleteAlert()}, 3000);
 }
 
 function onClick(e) {
@@ -31,10 +34,3 @@ function onClick(e) {
         todosView.deleteTodo(id);
     }
 }
-
-// table.addEventListener("click", function (e) {
-//     if (e.target.classList.contains('remove-task')) {
-//         const id = e.target.closest("[data-task-id]").dataset.taskId;
-//         deleteItemfromStorage(id) && deleteTodoFromView(id);
-//     }
-// });
